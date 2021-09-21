@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 375,
+              height: 380,
               padding: EdgeInsets.all(20),
               // color: Colors.red,
               decoration: BoxDecoration(
@@ -90,9 +90,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(top: 10),
+                            margin: EdgeInsets.only(top: 20),
                             width: 200,
-                            height: 70,
+                            height: 60,
                             child: RaisedButton(
                               onPressed: () {},
                               child: Text(
