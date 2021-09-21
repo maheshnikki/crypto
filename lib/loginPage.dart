@@ -1,3 +1,5 @@
+import 'package:crypto/NavBarBottom/home.dart';
+import 'package:crypto/homePage.dart';
 import 'package:crypto/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -94,7 +96,12 @@ class _LoginPageState extends State<LoginPage> {
                             width: 200,
                             height: 60,
                             child: RaisedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage()),
+                            );
+                              },
                               child: Text(
                                 'Login',
                                 style: TextStyle(
@@ -103,6 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               color: Colors.black,
+                              splashColor: Colors.amberAccent,
                             ),
                           ),
                           Padding(
