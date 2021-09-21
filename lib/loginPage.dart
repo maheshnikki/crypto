@@ -1,3 +1,4 @@
+import 'package:crypto/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -17,16 +18,15 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 455,
+              height: 375,
               padding: EdgeInsets.all(20),
               // color: Colors.red,
               decoration: BoxDecoration(
-                  color: Colors.amberAccent[700],
-                  borderRadius: BorderRadius.only(
+                color: Colors.amberAccent[700],
+                borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(100),
-                    bottomRight: Radius.circular(100)
-                  ),
-                  ),
+                    bottomRight: Radius.circular(100)),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -60,11 +60,13 @@ class _LoginPageState extends State<LoginPage> {
                         children: <Widget>[
                           TextFormField(
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.email,color: Colors.black),
                               labelText: 'Email',
                               hintText: 'Enter your Email',
                               labelStyle: TextStyle(
                                 fontSize: 36,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -74,11 +76,13 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(padding: EdgeInsets.only(top: 10)),
                           TextFormField(
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.password,color: Colors.black),
                               labelText: 'Password',
                               hintText: 'Enter your Password',
                               labelStyle: TextStyle(
                                 fontSize: 36,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -86,43 +90,86 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.only(top:10),
+                            padding: EdgeInsets.only(top: 10),
                             width: 200,
                             height: 70,
                             child: RaisedButton(
-                              onPressed: (){},
+                              onPressed: () {},
                               child: Text(
                                 'Login',
                                 style: TextStyle(
-                                  color: Colors.,
+                                  color: Colors.amberAccent[700],
                                   fontSize: 36,
                                 ),
                               ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  side: BorderSide(color: Colors.red,),
-                                  ),
-                              ),
+                              color: Colors.black,
                             ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(5),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Container(
-                                child: TextButton(
-                                  onPressed: (){}, 
-                                  child: Text(
-                                    'FORGOT PASSWORD ?',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                    ),
-                                  ))
-                              ),
+                                  child: TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        'FORGOT PASSWORD ?',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black,
+                                        ),
+                                      ))),
                             ],
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 40),
+                  ),
+                  Center(
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 36,
                       ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Center(
+                      child: Container(
+                        width: 200,
+                        height: 60,
+                        child: RaisedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SignUp()),
+                            );
+                          },
+                          child: Text(
+                            'SIGN UP',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 36,
+                            ),
+                          ),
+                          color: Colors.amberAccent[700],
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
