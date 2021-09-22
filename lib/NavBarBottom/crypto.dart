@@ -56,71 +56,88 @@ class _CryptoState extends State<Crypto> {
       ),
       body: Container(
         child: SingleChildScrollView(
-          child: Column(
-            children: cypto.map((cryptoCurrency) {
-              return Card(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      child: CircleAvatar(
-                        radius: 45,
-                        backgroundImage:
-                            NetworkImage("http://i.imgur.com/pSHXfu5.jpg"),
-                      ),
+          child: RefreshIndicator(
+            onRefresh: () {
+              return Future.delayed(Duration(seconds: 5), () {
+                setState(() {
+                  print('refresh');
+                });
+              });
+            },
+            child: Column(
+              children: cypto.map((cryptoCurrency) {
+                return InkWell(
+                  onDoubleTap: () {
+                    setState(() {
+                      cypto.remove(cryptoCurrency);
+                    });
+                  },
+                  child: Card(
+                    elevation: 5,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: CircleAvatar(
+                            radius: 45,
+                            backgroundImage:
+                                NetworkImage("http://i.imgur.com/pSHXfu5.jpg"),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(cryptoCurrency.Name),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                cryptoCurrency.Name,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.end,
+                            // crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '\$${cryptoCurrency.amount.toString()}',
+                                textAlign: TextAlign.end,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                '\$${cryptoCurrency.percentage.toString()}',
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    cypto.remove(cryptoCurrency);
+                                  });
+                                },
+                                icon: Icon(Icons.delete),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(cryptoCurrency.Name),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            cryptoCurrency.Name,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.end,
-                        // crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            '\$${cryptoCurrency.amount.toString()}',
-                            textAlign: TextAlign.end,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '\$${cryptoCurrency.percentage.toString()}',
-                            textAlign: TextAlign.end,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                cypto.remove(cryptoCurrency);
-                              });
-                            },
-                            icon: Icon(Icons.delete),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
+                  ),
+                );
+              }).toList(),
+            ),
           ),
         ),
       ),

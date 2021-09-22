@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   //   Crypto(Name: 'Dogecoin', amount: 2.2, percentage: 22),
   //   Crypto(Name: 'BitCoin', amount: 5.555, percentage: 35),
   // ];
-  
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
             child: Column(
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: 20, left: 20),
+                  margin: EdgeInsets.only(top: 30, left: 20),
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Column(
@@ -59,12 +59,12 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 20, top: 50),
+                  margin: EdgeInsets.only(left: 40, top: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(
-                        width: 150,
+                        width: 120,
                         height: 30,
                         child: RaisedButton(
                           onPressed: () {},
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
                       Container(
                         margin: EdgeInsets.only(left: 50),
                         child: SizedBox(
-                          width: 150,
+                          width: 120,
                           height: 30,
                           child: RaisedButton(
                             onPressed: () {},
@@ -138,16 +138,16 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  // child: Align(
-                  //   child: TextButton(
-                  //     onPressed: () => _AddCrypto(context),
-                  //     child: Text(
-                  //       'Add More',
-                  //       // textAlign: TextAlign.right,
-                  //     ),
-                  //   ),
-                  // ),
-                ),
+                    // child: Align(
+                    //   child: TextButton(
+                    //     onPressed: () => _AddCrypto(context),
+                    //     child: Text(
+                    //       'Add More',
+                    //       // textAlign: TextAlign.right,
+                    //     ),
+                    //   ),
+                    // ),
+                    ),
               ],
             ),
           ),
