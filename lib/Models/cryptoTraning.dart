@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Crypto {
+class CryptoTraning {
   final String Name;
   final double amount;
   final double percentage;
 
-  Crypto(
+  CryptoTraning(
     {
-    required this.Name,
-    required this.amount,
-    required this.percentage,
-  });
+    required this.Name, 
+    required this.amount, 
+    required this.percentage, 
+    }
+  );
 }

@@ -62,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
                         children: <Widget>[
                           TextFormField(
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.email,color: Colors.black),
+                              prefixIcon:
+                                  Icon(Icons.email, color: Colors.black),
                               labelText: 'Email',
                               hintText: 'Enter your Email',
                               labelStyle: TextStyle(
@@ -78,7 +79,8 @@ class _LoginPageState extends State<LoginPage> {
                           Padding(padding: EdgeInsets.only(top: 10)),
                           TextFormField(
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.password,color: Colors.black),
+                              prefixIcon:
+                                  Icon(Icons.password, color: Colors.black),
                               labelText: 'Password',
                               hintText: 'Enter your Password',
                               labelStyle: TextStyle(
@@ -97,10 +99,11 @@ class _LoginPageState extends State<LoginPage> {
                             height: 60,
                             child: RaisedButton(
                               onPressed: () {
-                                Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => HomePage()),
-                            );
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()),
+                                );
                               },
                               child: Text(
                                 'Login',

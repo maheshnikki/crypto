@@ -1,6 +1,7 @@
+import 'package:crypto/Models/cryptoTraning.dart';
+import 'package:crypto/widgets/addingCrypto.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto/NavBarBottom/home.dart';
-import 'package:crypto/Models/cryptoTraning.dart';
 
 class Crypto extends StatefulWidget {
   Crypto({Key? key}) : super(key: key);
@@ -10,61 +11,118 @@ class Crypto extends StatefulWidget {
 }
 
 class _CryptoState extends State<Crypto> {
+  final List<CryptoTraning> cypto = [
+    CryptoTraning(Name: 'Doge', amount: 12, percentage: 12),
+    CryptoTraning(Name: 'Doge', amount: 12, percentage: 12),
+  ];
+
+  void AddCrypto(BuildContext cyp) {
+    showModalBottomSheet(
+        context: cyp,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: AddingCrypto(add),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+  void add(String name, double amount, double percentage) {
+    final addedCryto = CryptoTraning(
+      Name: name,
+      amount: amount,
+      percentage: percentage,
+    );
+    setState(() {
+      cypto.add(addedCryto);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: cypto.map((cryptoCurrency) {
-          return Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  child: CircleAvatar(
-                    radius: 45,
-                    backgroundImage:
-                        NetworkImage("http://i.imgur.com/pSHXfu5.jpg"),
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CrytoCurrency'),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            iconSize: 50,
+            onPressed: () => AddCrypto(context),
+            icon: Icon(Icons.add),
+            color: Colors.purple[600],
+          ),
+        ],
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: cypto.map((cryptoCurrency) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: CircleAvatar(
+                        radius: 45,
+                        backgroundImage:
+                            NetworkImage("http://i.imgur.com/pSHXfu5.jpg"),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(cryptoCurrency.Name),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            cryptoCurrency.Name,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                        // mainAxisAlignment: MainAxisAlignment.end,
+                        // crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '\$${cryptoCurrency.amount.toString()}',
+                            textAlign: TextAlign.end,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            '\$${cryptoCurrency.percentage.toString()}',
+                            textAlign: TextAlign.end,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                cypto.remove(cryptoCurrency);
+                              });
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  margin: EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(cryptoCurrency.Name),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        cryptoCurrency.Name,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  color: Colors.red,
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.end,
-                    // crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        '\$${cryptoCurrency.amount.toString()}',
-                        textAlign: TextAlign.end,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '\$${cryptoCurrency.percentage.toString()}',
-                        textAlign: TextAlign.end,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
+          ),
+        ),
       ),
     );
   }
